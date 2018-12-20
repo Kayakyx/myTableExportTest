@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>将html表格生成pdf</title>
+    <style>
+
+        .btnGroup{
+            width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        table{
+            border-collapse: collapse;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+
+    </style>
+    <!--引入jQuery-->
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+
+
+    <!--pdfmake 插件引入-->
+    <script type="text/javascript" src="libs/pdfmake/pdfmake.min.js"></script>
+    <script type="text/javascript" src="libs/pdfmake/vfs_fonts.js"></script>
+
+
+    <!--要在客户端保存生成的导出文件，要引入的js文件-->
+    <script type="text/javascript" src="libs/FileSaver/FileSaver.min.js"></script>
+
+
+    <!--导出Excel表格要用js文件-->
+    <!--<script type="text/javascript" src="libs/js-xlsx/xlsx.core.min.js"></script>-->
+
+    <!--要将表导出为PDF文件，需要包括以下js文件：-->
+    <script type="text/javascript" src="libs/jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+
+    <!--要导出PNG格式的表，需要包括的js文件：-->
+    <!-- For IE support include es6-promise before html2canvas -->
+    <script type="text/javascript" src="libs/es6-promise/es6-promise.auto.min.js"></script>
+    <script type="text/javascript" src="libs/html2canvas/html2canvas.min.js"></script>
+    <!--不管期望的格式如何，最后都要引入的js文件：-->
+    <script type="text/javascript" src="./tableExport.js"></script>
+
+    <!--要注意上面引入的顺序-->
+
+</head>
+<body>
+
+    <!--这里只演示了生成pdf的方法。也可以生成word和Excel、png等，详细请参考如下github网址：-->
+    <!--tableExport 插件 使用 jspdf插件（不支持中文）和pdfmake插件（支持中文，但是自己得将中文.ttf文件打包成vfs_fonts.js文件，替换掉原来的。）-->
+    <!--https://github.com/hhurz/tableExport.jquery.plugin-->
+    <!--https://github.com/bpampuch/pdfmake-->
+    <!--pdfmake自定义字体的方法，如果先麻烦的话，就用这个项目 备份与说明 文件夹下打包好的吧！（支持的中文是微软雅黑）-->
+    <!--网上也有中文教程自行搜索，好吧我扔一个吧！ 1、https://www.cnblogs.com/s313139232/p/7545114.html  2、http://www.cnblogs.com/xrab/p/7210588.html  -->
+    <!-- https://github.com/bpampuch/pdfmake/wiki/Custom-Fonts-&#45;&#45;client-side-->
+
+
+
+    <div class="btnGroup">
+        <!--将要生成的表格生成传进去， 固定写法-->
+        <button onClick="$('#tableEng').tableExport({type:'pdf',pdfmake:{enabled:true}});">导出为PDF</button>
+    </div>
+
+    <!--全英文表格-->
+    <table id="tableEng">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Chinese</th>
+                <th>English</th>
+                <th>Math</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>zhangsan</td>
+                <td>89</td>
+                <td>55</td>
+                <td>89</td>
+            </tr>
+            <tr>
+                <td>lisi</td>
+                <td>63</td>
+                <td>55</td>
+                <td>64</td>
+            </tr>
+            <tr>
+                <td>wangwu</td>
+                <td>82</td>
+                <td>67</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>xiaoming</td>
+                <td>78</td>
+                <td>93</td>
+                <td>24</td>
+            </tr>
+            <!--使用只支持英文字体的js文件会会乱码，更换支持中文微软雅黑的字体文件（可以使用github上的pdfmake项目自己打包生成），就不乱码了。-->
+            <tr>
+                <td>小红</td>
+                <td>78</td>
+                <td>93</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>小老弟</td>
+                <td>86</td>
+                <td>93</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>来来</td>
+                <td>43</td>
+                <td>88</td>
+                <td>24</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+</body>
+</html>

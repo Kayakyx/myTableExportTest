@@ -1,0 +1,4 @@
+这个文件文件是 webpage打包的 .ttf 字体文件（这个字体文件只支持英文，所以有中文的时候会乱码）。
+
+ 我们可以从github上克隆一个pdfmake项目，用 pdfmake 打包生成中文字体
+存放位置：libs/pdfmake/vfs_fonts.js
